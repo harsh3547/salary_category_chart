@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_salary_categ_chart" model="ir.ui.view">
+            <field name="name">salary.categ.chart</field>
+            <field name="model">salary.categ.chart</field>
+            <field name="arch" type="xml">
+                <form string="Salary Category chart">
+                    <group>
+                        <label for="period_id"/>
+                        <div>
+                            <field name="period_id" class="oe_inline"/>
+                            <label string="(If you do not select a specific period, all open periods will be selected)" class="oe_inline"/>
+                        </div>
+                        <field name="target_move"/>
+	                </group>
+                    <footer>
+                        <button string="Open Charts" name="salary_chart_open_window" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_salary_categ_chart" model="ir.actions.act_window">
+            <field name="name">Salary Rule Categories Hierarchy</field>
+            <field name="res_model">salary.categ.chart</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="view_salary_categ_chart"/>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem
+            id="hr_payroll.menu_hr_salary_rule_category_tree_view"
+            action="action_salary_categ_chart"
+            parent="hr_payroll.payroll_configure"
+            sequence="12"
+            icon="STOCK_INDENT"
+            groups="base.group_no_one"
+        />
+        
+
+    </data>
+</openerp>
