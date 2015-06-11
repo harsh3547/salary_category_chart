@@ -26,8 +26,8 @@
     'description' : """
     Changing the view of Salary Category Tree Hierarchy to include sum of category by period 
     """,
-    'depends' : ['base','hr','hr_payroll'],
-    'data': [
+    'depends' : ['base','hr','hr_payroll','account'],
+    'data': ['wizard/salary_categ_chart_view.xml','salary_chart.xml'
     ],
     'installable': True,
     'auto_install': False,
