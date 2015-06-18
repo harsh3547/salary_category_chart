@@ -6,8 +6,8 @@ class salary_categ_chart(osv.osv_memory):
     _description = "Salary Category Chart"
     _columns = {
        'period_id': fields.many2one('account.period','Period'),
-       'target_move': fields.selection([('draft', 'All draft Entries'),
-                                        ('done', 'All confirmed Entries'),
+       'target_move': fields.selection([('done', 'All Confirmed Entries'),
+                                        ('draft', 'All Draft Entries'),
                                         ], 'State', required=True),
     }
     
@@ -27,15 +27,12 @@ class salary_categ_chart(osv.osv_memory):
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         if data.period_id:
-            result['context'] = str({'period_id': data.period_id.id, \
-                                     'fiscalyear_id': data.period_id.fiscalyear_id.id, \
-                                        'state': data.target_move})
+            result['context'] = str({'period_obj': data.period_id.id,'state': data.target_move,'fiscalyear_id': data.period_id.fiscalyear_id.id})
             period_code = data.period_id.code
-            result['name'] += period_code and (':' + period_code) or ''
         else:
             result['context'] = str({'state': data.target_move})
         
-        print "---------------result--------------",result
+        ###print "---------------result--------------",result
         return result
 
     

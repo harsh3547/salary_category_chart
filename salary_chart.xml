@@ -20,8 +20,8 @@
             <field name="inherit_id" ref="hr_payroll.hr_salary_rule_category_tree" />
             <field name="arch" type="xml">
             	<xpath expr = "/tree/field[@name='code']" position = "after">
-						<field name = "sum_period"/>
-						<field name = "sum"/>
+						<field name = "sum_period" string="Current Period Sum"/>
+						<field name = "sum" string="Current Year Sum"/>
 				</xpath>
             </field>
         </record>
